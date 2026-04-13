@@ -52,7 +52,7 @@ def preprocess_comment(comment):
 # Load the model and vectorizer from the model registry and local storage
 def load_model_and_vectorizer(model_name, model_version, vectorizer_path):
     # Set MLflow tracking URI to your server
-    mlflow.set_tracking_uri("http://ec2-13-204-252-144.ap-south-1.compute.amazonaws.com:5000/")  # Replace with your MLflow tracking URI
+    mlflow.set_tracking_uri("http://ec2-65-0-167-225.ap-south-1.compute.amazonaws.com:5000/")  # Replace with your MLflow tracking URI
     client = MlflowClient()
     model_uri = f"models:/{model_name}/{model_version}"
     model = mlflow.pyfunc.load_model(model_uri)
@@ -66,8 +66,8 @@ def load_model_and_vectorizer(model_name, model_version, vectorizer_path):
 
 import joblib
 
-model = joblib.load("./lgbm_model.pkl")
-vectorizer = joblib.load("./tfidf_vectorizer.pkl")
+model = joblib.load("../lgbm_model.pkl")
+vectorizer = joblib.load("../tfidf_vectorizer.pkl")
 
 # def load_model(model_path, vectorizer_path):
 #     """Load the trained model."""

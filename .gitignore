@@ -1,3 +1,10 @@
+.env
+*.ipynb
+*.ipynb_checkpoints
+*.pem
+*.key
+credentials.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

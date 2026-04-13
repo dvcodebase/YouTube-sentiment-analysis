@@ -1,8 +1,19 @@
 # YouTube-sentiment-analysis
 End-to-end MLOps-powered YouTube Sentiment Analysis system with Chrome plugin integration, built using LightGBM, MLflow, DVC, Docker, and AWS for scalable real-time comment insights.
 
+<<<<<<< HEAD
 ![interface_01t](https://github.com/dvcodebase/YouTube-sentiment-analysis/blob/main/chrome_plugin_interface_01.jpeg)
 ![interface_02](https://github.com/dvcodebase/YouTube-sentiment-analysis/blob/main/chrome_plugin_interface_02.jpeg)
+=======
+![YouTube Comment Insights](./image1.png) ![Sentiment Analysis Result](./image.jpg)  
+
+![Comment Analysis Summary](./image.jpg)    
+
+![Sentiment Trend Over Time](./image.jpg) ![Top 25 Comments with sentiment](./image5.jpg)  
+
+![Comment WordCloud](./image6.jpg)   
+
+>>>>>>> 18b8760 (project_images_added)
 
 # End-to-end-Youtube-Sentiment
 
