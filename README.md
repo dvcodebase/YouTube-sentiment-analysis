@@ -1,6 +1,9 @@
 # YouTube-sentiment-analysis
 End-to-end MLOps-powered YouTube Sentiment Analysis system with Chrome plugin integration, built using LightGBM, MLflow, DVC, Docker, and AWS for scalable real-time comment insights.
 
+![interface_01t](https://github.com/dvcodebase/YouTube-sentiment-analysis/blob/main/chrome_plugin_interface_01.jpeg)
+![interface_02](https://github.com/dvcodebase/YouTube-sentiment-analysis/blob/main/chrome_plugin_interface_02.jpeg)
+
 # End-to-end-Youtube-Sentiment
 
 conda create -n youtube python=3.11 -y 
