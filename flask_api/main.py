@@ -136,7 +136,7 @@ def predict():
         predictions = model.predict(transformed_comments)
         
         # Convert predictions to strings for consistency
-        # predictions = [str(pred) for pred in predictions]
+        predictions = [str(pred) for pred in predictions]
     except Exception as e:
         return jsonify({"error": f"Prediction failed: {str(e)}"}), 500
     
