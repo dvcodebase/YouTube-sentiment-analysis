@@ -4,7 +4,7 @@ matplotlib.use('Agg')  # Use non-interactive backend before importing pyplot
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import io
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import mlflow
 import numpy as np
@@ -91,11 +91,13 @@ def predict_with_timestamps():
         # Transform comments using the vectorizer
         transformed_comments = vectorizer.transform(preprocessed_comments)
 
-        # Convert the sparse matrix to dense format
-        dense_comments = transformed_comments.toarray()  # Convert to dense array
+        # # Convert the sparse matrix to dense format
+        # dense_comments = transformed_comments.toarray()  # Convert to dense array
         
-        # Make predictions
-        predictions = model.predict(dense_comments).tolist()  # Convert to list
+        # # Make predictions
+        # predictions = model.predict(dense_comments).tolist()  # Convert to list
+
+        predictions = model.predict(transformed_comments)
         
         # Convert predictions to strings for consistency
         predictions = [str(pred) for pred in predictions]
@@ -125,11 +127,13 @@ def predict():
         # Transform comments using the vectorizer
         transformed_comments = vectorizer.transform(preprocessed_comments)
 
-        # Convert the sparse matrix to dense format
-        dense_comments = transformed_comments.toarray()  # Convert to dense array
+        # # Convert the sparse matrix to dense format
+        # dense_comments = transformed_comments.toarray()  # Convert to dense array
         
-        # Make predictions
-        predictions = model.predict(dense_comments).tolist()  # Convert to list
+        # # Make predictions
+        # predictions = model.predict(dense_comments).tolist()  # Convert to list
+
+        predictions = model.predict(transformed_comments)
         
         # Convert predictions to strings for consistency
         # predictions = [str(pred) for pred in predictions]
@@ -146,6 +150,7 @@ def health():
 
 @app.route('/generate_chart', methods=['POST'])
 def generate_chart():
+    import matplotlib.pyplot as plt
     try:
         data = request.get_json()
         sentiment_counts = data.get('sentiment_counts')
@@ -227,6 +232,7 @@ def generate_wordcloud():
 
 @app.route('/generate_trend_graph', methods=['POST'])
 def generate_trend_graph():
+    import matplotlib.pyplot as plt
     try:
         data = request.get_json()
         sentiment_data = data.get('sentiment_data')
@@ -311,4 +317,4 @@ def generate_trend_graph():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
