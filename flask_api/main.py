@@ -61,36 +61,16 @@ def load_model_and_vectorizer(model_name, model_version, vectorizer_path):
    
     return model, vectorizer
 
-# # Initialize the model and vectorizer
-# model, vectorizer = load_model_and_vectorizer("my_model", "1", "./tfidf_vectorizer.pkl")  # Update paths and versions as needed
 
 import joblib
 
-model = joblib.load("../lgbm_model.pkl")
-vectorizer = joblib.load("../tfidf_vectorizer.pkl")
-
-# def load_model(model_path, vectorizer_path):
-#     """Load the trained model."""
-#     try:
-#         with open(model_path, 'rb') as file:
-#             model = pickle.load(file)
-        
-#         with open(vectorizer_path, 'rb') as file:
-#             vectorizer = pickle.load(file)
-      
-#         return model, vectorizer
-#     except Exception as e:
-#         raise
-
-
-# # Initialize the model and vectorizer
-# model, vectorizer = load_model("./lgbm_model.pkl", "./tfidf_vectorizer.pkl")  
+model = joblib.load("./lgbm_model.pkl")
+vectorizer = joblib.load("./tfidf_vectorizer.pkl")
 
 
 @app.route('/')
 def home():
     return "Welcome to our flask api"
-
 
 
 @app.route('/predict_with_timestamps', methods=['POST'])
@@ -160,7 +140,9 @@ def predict():
     response = [{"comment": comment, "sentiment": sentiment} for comment, sentiment in zip(comments, predictions)]
     return jsonify(response)
 
-
+@app.route("/health")
+def health():
+    return {"status": "ok"}
 
 @app.route('/generate_chart', methods=['POST'])
 def generate_chart():
