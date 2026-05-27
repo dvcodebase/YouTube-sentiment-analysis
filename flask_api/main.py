@@ -47,12 +47,12 @@ def preprocess_comment(comment):
     except Exception as e:
         print(f"Error in preprocessing comment: {e}")
         return comment
-
+# http://ec2-65-0-167-225.ap-south-1.compute.amazonaws.com:5000/
 
 # Load the model and vectorizer from the model registry and local storage
 def load_model_and_vectorizer(model_name, model_version, vectorizer_path):
     # Set MLflow tracking URI to your server
-    mlflow.set_tracking_uri("http://ec2-65-0-167-225.ap-south-1.compute.amazonaws.com:5000/")  # Replace with your MLflow tracking URI
+    mlflow.set_tracking_uri("https://youtube-sentiment-analysis-2si8.onrender.com/")  # Replace with your MLflow tracking URI
     client = MlflowClient()
     model_uri = f"models:/{model_name}/{model_version}"
     model = mlflow.pyfunc.load_model(model_uri)
@@ -109,7 +109,6 @@ def predict_with_timestamps():
     return jsonify(response)
 
 
-
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
@@ -138,6 +137,7 @@ def predict():
         # Convert predictions to strings for consistency
         predictions = [str(pred) for pred in predictions]
     except Exception as e:
+        print("Prediction Error:", str(e))
         return jsonify({"error": f"Prediction failed: {str(e)}"}), 500
     
     # Return the response with original comments and predicted sentiments
